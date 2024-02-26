@@ -1,0 +1,14 @@
+[Unit]
+Description=Enable NAT for devices on switch
+
+Before=dnsmasq.service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash /bin/setup-internal-network.sh
+
+[Install]
+WantedBy=multi-user.target
